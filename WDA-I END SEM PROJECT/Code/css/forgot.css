@@ -1,0 +1,58 @@
+/* Centered heading for Forgot Password page */
+#head1 {
+    font-size: 36px;
+    color: #37474F; 
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: "Raleway", sans-serif;
+}
+
+/* Subheading text */
+#para1 {
+    font-size: 18px;
+    color: #607D8B; 
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Raleway", sans-serif;
+}
+
+/* Button styles (matches your login page) */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00ACC1; /* Same color as the Login button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #00838F; /* Slightly darker shade */
+}
+
+/* Adjust the signup text style */
+.signup-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #607D8B;
+}
+
+.signup-text a {
+    color: #FF8A80; /* Matches the 'Forgot Password?' link color */
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+/* Image on the right */
+.image img {
+    width: 300px;
+    height: auto;
+    margin-left: 160px;
+}

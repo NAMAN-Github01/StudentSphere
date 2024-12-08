@@ -1,0 +1,237 @@
+<!-- Weekly Attendance Chart Section -->
+<section class="chart-section" style="background-color: #E8F6F7; padding: 30px 0; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px 5vw;">
+    <div style="width: 80%; margin: 0 auto; text-align: center;">
+        <h2 style="color: #006D77; font-family: 'Source Code Pro', monospace; margin-bottom: 20px;">
+            Weekly Attendance Statistics
+        </h2>
+        <div style="background: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <canvas id="myChart" style="max-width: 100%; height: 250;"></canvas>
+        </div>
+    </div>
+</section>
+
+<!-- CGPA Chart Section -->
+<section class="chart-section" style="background-color: #E8F6F7; padding: 30px 0; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px 5vw;">
+    <div style="width: 80%; margin: 0 auto; text-align: center;">
+        <h2 style="color: #006D77; font-family: 'Source Code Pro', monospace; margin-bottom: 20px;">
+            CGPA by Subjects
+        </h2>
+        <div style="background: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <canvas id="cgpaChart" style="max-width: 100%; height: 250;"></canvas>
+        </div>
+    </div>
+</section>
+
+<!-- Average Marks Chart Section -->
+<section class="chart-section" style="background-color: #E8F6F7; padding: 30px 0; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px 5vw;">
+    <div style="width: 80%; margin: 0 auto; text-align: center;">
+        <h2 style="color: #006D77; font-family: 'Source Code Pro', monospace; margin-bottom: 20px;">
+            Average Marks by Subject
+        </h2>
+        <div style="background: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <canvas id="averageMarksChart" style="max-width: 100%; height: 250;"></canvas>
+        </div>
+    </div>
+</section>
+
+<!-- Attendance vs CGPA Chart Section -->
+<section class="chart-section" style="background-color: #E8F6F7; padding: 30px 0; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px 5vw;">
+    <div style="width: 80%; margin: 0 auto; text-align: center;">
+        <h2 style="color: #006D77; font-family: 'Source Code Pro', monospace; margin-bottom: 20px;">
+            Attendance vs CGPA
+        </h2>
+        <div style="background: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <canvas id="attendanceVsCgpaChart" style="max-width: 100%; height: 250;"></canvas>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Weekly Attendance Chart
+    const attendanceCtx = document.getElementById('myChart').getContext('2d');
+    const attendanceChart = new Chart(attendanceCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            datasets: [{
+                label: 'Attendance Percentage',
+                data: [90, 85, 88, 95, 92],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 99, 132, 0.6)',
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: '#000'
+                    }
+                }
+            }
+        }
+    });
+
+    // CGPA Chart
+    const cgpaCtx = document.getElementById('cgpaChart').getContext('2d');
+    const cgpaChart = new Chart(cgpaCtx, {
+        type: 'bar',
+        data: {
+            labels: ['WDA', 'DBMS', 'CTP', 'SPS', 'PC', 'Sports'],
+            datasets: [{
+                label: 'CGPA',
+                data: [8.5, 9.0, 8.2, 7.8, 8.0, 7.5],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 10
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: 'black'
+                    }
+                }
+            }
+        }
+    });
+
+    // Average Marks Chart
+    const averageMarksCtx = document.getElementById('averageMarksChart').getContext('2d');
+    const averageMarksChart = new Chart(averageMarksCtx, {
+        type: 'bar',
+        data: {
+            labels: ['WDA', 'DBMS', 'CTP', 'SPS', 'PC', 'Sports'],
+            datasets: [{
+                label: 'Average Marks',
+                data: [85, 90, 80, 75, 88, 70],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 205, 86, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: 'black'
+                    }
+                }
+            }
+        }
+    });
+
+    // Attendance vs CGPA Chart
+    const attendanceVsCgpaCtx = document.getElementById('attendanceVsCgpaChart').getContext('2d');
+    const attendanceVsCgpaChart = new Chart(attendanceVsCgpaCtx, {
+        type: 'line',
+        data: {
+            labels: ['WDA', 'DBMS', 'CTP', 'SPS', 'PC', 'Sports'],
+            datasets: [{
+                label: 'Attendance Percentage',
+                data: [90, 85, 88, 95, 92, 87],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                fill: true,
+                tension: 0.4
+            },
+            {
+                label: 'CGPA',
+                data: [8.5, 9.0, 8.2, 7.8, 8.0, 7.5],
+                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 10,
+                    min: 0
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: 'black'
+                    }
+                }
+            }
+        }
+    });
+</script>
