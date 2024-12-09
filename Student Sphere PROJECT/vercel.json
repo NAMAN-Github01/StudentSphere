@@ -1,0 +1,32 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "Code/html/**",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "Code/css/**",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "Images and SVGs/**",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "Code/html/$1"
+      },
+      {
+        "src": "/css/(.*)",
+        "dest": "Code/css/$1"
+      },
+      {
+        "src": "/images/(.*)",
+        "dest": "Images and SVGs/$1"
+      }
+    ]
+  }
+  
